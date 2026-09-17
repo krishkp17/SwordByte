@@ -21,6 +21,7 @@ SwordByte is an AI-powered learning platform that helps students study smarter b
 * HTML
 * CSS
 * JavaScript
+* React.ja
 
 ### Backend
 

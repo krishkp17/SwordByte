@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", sans-serif;
+  color: #1e293b;
+  background: #fafaf9;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(20, 184, 166, 0.10), transparent 28rem),
+    radial-gradient(circle at 90% 10%, rgba(251, 146, 60, 0.08), transparent 24rem),
+    #fafaf9;
+}
+
+.dark body {
+  color: #e2e8f0;
+  background:
+    radial-gradient(circle at 10% 0%, rgba(20, 184, 166, 0.12), transparent 28rem),
+    #0b1120;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/60 bg-white/75 shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-slate-900/70;
+  }
+
+  .card {
+    @apply rounded-3xl border border-slate-200/70 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-teal-700 to-teal-500 px-5 py-3 font-semibold text-white shadow-lg shadow-teal-700/20 transition hover:-translate-y-0.5 hover:shadow-xl;
+  }
+
+  .btn-soft {
+    @apply inline-flex items-center justify-center gap-2 rounded-2xl bg-teal-50 px-4 py-2.5 font-semibold text-teal-800 transition hover:bg-teal-100 dark:bg-teal-950/50 dark:text-teal-200 dark:hover:bg-teal-950;
+  }
+
+  .muted {
+    @apply text-slate-500 dark:text-slate-400;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #99f6e4;
+  border-radius: 999px;
+}

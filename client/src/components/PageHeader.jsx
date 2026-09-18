@@ -1,21 +1,19 @@
-import { useState } from "react";
 import React from "react";
 
-import Sidebar from "./Sidebar";
-import Topbar from "./Topbar";
 
-export default function Layout({ children }) {
-  const [open, setOpen] = useState(false);
-
+export default function PageHeader({ eyebrow, title, description, action }) {
   return (
-    <div className="min-h-screen">
-      <Sidebar open={open} onClose={() => setOpen(false)} />
-
-      <div className="lg:pl-72">
-        <Topbar onMenu={() => setOpen(true)} />
-        <main className="mx-auto max-w-[1500px] px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-          {children}
-        </main>
+    <div className="mb-7 flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+      <div>
+        {eyebrow && (
+          <p className="mb-2 text-xs font-extrabold uppercase tracking-[0.2em] text-teal-600">
+            {eyebrow}
+          </p>
+        )}
+        <h1 className="font-display text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl dark:text-white">
+          {title}
+        </h1>
+        {description && <p className="mt-2 max-w-2xl text-slate-500 dark:text-slate-400">{description}</p>}
       </div>
     </div>
   );

@@ -65,7 +65,7 @@ copy .env.example .env
 PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/learnmate
 GEMINI_API_KEY=your_key_here
-GEMINI_MODEL=gpt-5.5
+GEMINI_MODEL=gemini-3.1-flash-lite
 CLIENT_URL=http://localhost:5173
 MAX_PDF_MB=10
 ```

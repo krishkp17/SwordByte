@@ -64,8 +64,8 @@ copy .env.example .env
 ```bash
 PORT=5000
 MONGODB_URI=mongodb://127.0.0.1:27017/learnmate
-OPENAI_API_KEY=your_key_here
-OPENAI_MODEL=gpt-5.5
+GEMINI_API_KEY=your_key_here
+GEMINI_MODEL=gpt-5.5
 CLIENT_URL=http://localhost:5173
 MAX_PDF_MB=10
 ```

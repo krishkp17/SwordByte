@@ -15,6 +15,7 @@ export default function PageHeader({ eyebrow, title, description, action }) {
         </h1>
         {description && <p className="mt-2 max-w-2xl text-slate-500 dark:text-slate-400">{description}</p>}
       </div>
+      {action}
     </div>
   );
 }

@@ -5,7 +5,6 @@ import { askTutor } from "../services/api";
 import { useApp } from "../context/AppContext";
 import React from "react";
 
-
 const suggestions = [
   "Explain this like I'm 10",
   "What formula should I remember?",
@@ -60,36 +59,53 @@ export default function AITutor() {
         description="Get context-based explanations from your uploaded study material."
       />
 
-      <div className="mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center gap-3 border-b border-slate-100 p-5 dark:border-slate-800">
-          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-gradient-to-br from-teal-700 to-teal-400 text-white shadow-lg">
+      <div className="mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-slate-300 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex items-center gap-3 border-b border-slate-200 p-5 dark:border-slate-800">
+          <div className="grid h-11 w-11 place-items-center rounded-2xl bg-blue-600 text-white shadow-sm dark:bg-gradient-to-br dark:from-teal-700 dark:to-teal-400 dark:shadow-lg">
             <Bot />
           </div>
+
           <div>
-            <div className="font-bold">LearnMate AI</div>
-            <div className="text-xs text-emerald-600">● Ready to help</div>
+            <div className="font-bold text-slate-900 dark:text-white">
+              LearnMate AI
+            </div>
+
+            <div className="text-xs text-emerald-600">
+              ● Ready to help
+            </div>
           </div>
         </div>
 
-        <div className="min-h-[430px] space-y-5 bg-slate-50/70 p-5 sm:p-7 dark:bg-slate-950/30">
+        <div className="min-h-[430px] space-y-5 bg-slate-50 p-5 sm:p-7 dark:bg-slate-950/30">
           {messages.map((message, index) => (
-            <div key={index} className={`flex gap-3 ${message.role === "user" ? "justify-end" : ""}`}>
+            <div
+              key={index}
+              className={`flex gap-3 ${
+                message.role === "user" ? "justify-end" : ""
+              }`}
+            >
               {message.role === "assistant" && (
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-teal-100 text-teal-700 dark:bg-teal-950/50 dark:text-teal-200">
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-blue-50 text-blue-600 dark:bg-teal-950/50 dark:text-teal-200">
                   <Bot size={17} />
                 </div>
               )}
 
-              <div className={`max-w-[78%] rounded-3xl px-5 py-4 text-sm leading-7 ${
-                message.role === "user"
-                  ? "rounded-br-md bg-teal-700 text-white"
-                  : "rounded-bl-md bg-white text-slate-700 shadow-sm dark:bg-slate-900 dark:text-slate-200"
-              }`}>
+              <div
+                className={`max-w-[78%] rounded-3xl px-5 py-4 text-sm leading-7 ${
+                  message.role === "user"
+                    ? "rounded-br-md bg-blue-600 text-white"
+                    : "rounded-bl-md border border-slate-200 bg-white text-slate-700 shadow-sm dark:bg-slate-900 dark:text-slate-200"
+                }`}
+              >
                 <div className="whitespace-pre-wrap">{message.text}</div>
+
                 {message.sources?.length > 0 && (
                   <div className="mt-3 flex flex-wrap gap-2">
                     {message.sources.map((source) => (
-                      <span key={source} className="rounded-full bg-teal-50 px-2.5 py-1 text-[10px] font-bold text-teal-700 dark:bg-teal-950/50 dark:text-teal-200">
+                      <span
+                        key={source}
+                        className="rounded-full border border-blue-100 bg-blue-50 px-2.5 py-1 text-[10px] font-bold text-blue-700 dark:bg-teal-950/50 dark:text-teal-200"
+                      >
                         📚 {source}
                       </span>
                     ))}
@@ -98,7 +114,7 @@ export default function AITutor() {
               </div>
 
               {message.role === "user" && (
-                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-orange-100 text-orange-600">
+                <div className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-slate-100 text-slate-600 dark:bg-orange-100 dark:text-orange-600">
                   <User size={17} />
                 </div>
               )}
@@ -106,22 +122,23 @@ export default function AITutor() {
           ))}
 
           {loading && (
-            <div className="flex items-center gap-3 text-sm text-slate-400">
-              <div className="grid h-9 w-9 place-items-center rounded-xl bg-teal-100 text-teal-700">
+            <div className="flex items-center gap-3 text-sm text-slate-500 dark:text-slate-400">
+              <div className="grid h-9 w-9 place-items-center rounded-xl bg-blue-50 text-blue-600 dark:bg-teal-100 dark:text-teal-700">
                 <Sparkles size={17} />
               </div>
+
               LearnMate is thinking...
             </div>
           )}
         </div>
 
-        <div className="border-t border-slate-100 p-5 dark:border-slate-800">
+        <div className="border-t border-slate-200 bg-white p-5 dark:border-slate-800">
           <div className="mb-4 flex gap-2 overflow-x-auto pb-1">
             {suggestions.map((item) => (
               <button
                 key={item}
                 onClick={() => send(item)}
-                className="shrink-0 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 transition hover:border-teal-200 hover:bg-teal-50 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
+                className="shrink-0 rounded-full border border-slate-200 bg-white px-3 py-2 text-xs font-semibold text-slate-600 transition hover:border-blue-200 hover:bg-blue-50 hover:text-blue-700 dark:border-slate-800 dark:bg-slate-950 dark:text-slate-300"
               >
                 {item}
               </button>
@@ -140,9 +157,14 @@ export default function AITutor() {
               }}
               rows={1}
               placeholder="Ask something about your notes..."
-              className="min-h-12 flex-1 resize-none bg-transparent px-3 py-3 text-sm outline-none"
+              className="min-h-12 flex-1 resize-none bg-transparent px-3 py-3 text-sm text-slate-800 placeholder:text-slate-400 outline-none dark:text-white dark:placeholder:text-slate-500"
             />
-            <button onClick={() => send()} disabled={loading} className="btn-primary h-12 w-12 rounded-xl p-0">
+
+            <button
+              onClick={() => send()}
+              disabled={loading}
+              className="btn-primary h-12 w-12 rounded-xl bg-blue-600 p-0 text-white hover:bg-blue-700 disabled:bg-slate-300 dark:bg-teal-700 dark:hover:bg-teal-600"
+            >
               <Send size={18} />
             </button>
           </div>

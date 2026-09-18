@@ -70,6 +70,62 @@ CLIENT_URL=http://localhost:5173
 MAX_PDF_MB=10
 ```
 
+## Demo flow
+
+1. Open Dashboard.
+2. Go to Upload Material.
+3. Upload a PDF.
+4. Open Notes.
+5. Ask the AI Tutor a question.
+6. Generate a quiz.
+7. Submit answers.
+8. See the Learning Gaps screen.
+9. Generate the Study Plan.
+10. Open Progress.
+
+
+## Project structure
+
+```text
+learnmate/
+├── client/
+│   └── src/
+│       ├── components/
+│       ├── context/
+│       ├── hooks/
+│       ├── pages/
+│       ├── services/
+│       ├── App.jsx
+│       ├── index.css
+│       └── main.jsx
+├── server/
+│   ├── controllers/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   ├── .env.example
+│   └── server.js
+└── README.md
+```
+
+## Production improvements
+
+For production, add:
+
+- Authentication/JWT
+- Per-user document authorization
+- Cloud object storage for PDFs
+- Rate limiting
+- Input validation
+- Background PDF/AI jobs
+- Vector search/RAG for very large documents
+- AI cost controls
+- Audit logging
+- HTTPS
+- MongoDB indexes
+
+
 ## Team Members
 
 * Nitish Kumar

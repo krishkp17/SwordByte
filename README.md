@@ -16,12 +16,16 @@ SwordByte is an AI-powered learning platform that helps students study smarter b
 
 ## Tech Stack
 
+* PDF text extraction
+* GeminiAI Responses API
+* Multer for PDF uploads
+
 ### Frontend
 
 * HTML
 * CSS
 * JavaScript
-* React.ja
+* React.js + vite
 
 ### Backend
 
@@ -30,15 +34,40 @@ SwordByte is an AI-powered learning platform that helps students study smarter b
 
 ### Database
 
-* MongoDB
+* MongoDB + Mongoose
 
 ## Installation
 
-```bash
+```bash 
 git clone <repository-url>
+```
+ 
+## Forntend
+
+```bash
+
 cd SwordByte
 npm install
 npm start
+```
+
+## Backend
+
+```bash
+cd server
+npm install
+copy .env.example .env
+```
+
+## Edit  .env
+
+```bash
+PORT=5000
+MONGODB_URI=mongodb://127.0.0.1:27017/learnmate
+OPENAI_API_KEY=your_key_here
+OPENAI_MODEL=gpt-5.5
+CLIENT_URL=http://localhost:5173
+MAX_PDF_MB=10
 ```
 
 ## Team Members

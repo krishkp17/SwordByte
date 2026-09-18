@@ -7,7 +7,10 @@ import { fileURLToPath } from "url";
 import mongoose from "mongoose";
 import dns from 'node:dns/promises'
 
-
+import documentRoutes from "./routes/documentRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
+import quizRoutes from "./routes/quizRoutes.js";
+import progressRoutes from "./routes/progressRoutes.js";
 
 dns.setServers(['8.8.8.8','0.0.0.0'])
 
@@ -28,7 +31,19 @@ app.use(
 app.use(express.json({ limit: "2mb" }));
 app.use("/uploads", express.static(uploadsDir));
 
+app.get("/api/health", (req, res) => {
+  res.json({
+    ok: true,
+    service: "LearnMate API",
+    mongo: mongoose.connection.readyState === 1,
+    aiConfigured: Boolean(process.env.OPENAI_API_KEY),
+  });
+});
 
+app.use("/api/documents", documentRoutes);
+app.use("/api/ai", aiRoutes);
+app.use("/api/quiz", quizRoutes);
+app.use("/api/progress", progressRoutes);
 
 app.use((err, req, res, next) => {
   console.error(err);

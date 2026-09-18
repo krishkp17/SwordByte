@@ -9,7 +9,9 @@ export async function uploadDocument(file, onUploadProgress) {
   form.append("file", file);
 
   const { data } = await api.post("/documents/upload", form, {
-    headers: { "Content-Type": "multipart/form-data" },
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
     onUploadProgress,
   });
 
@@ -27,7 +29,10 @@ export async function generateSummary(documentId) {
 }
 
 export async function askTutor(documentId, question) {
-  const { data } = await api.post("/ai/ask", { documentId, question });
+  const { data } = await api.post("/ai/ask", {
+    documentId,
+    question,
+  });
   return data;
 }
 
@@ -41,12 +46,17 @@ export async function generateQuiz(documentId, difficulty, questionCount) {
 }
 
 export async function submitQuiz(quizId, answers) {
-  const { data } = await api.post("/quiz/submit", { quizId, answers });
+  const { data } = await api.post("/quiz/submit", {
+    quizId,
+    answers,
+  });
   return data;
 }
 
 export async function generateStudyPlan(weakTopics) {
-  const { data } = await api.post("/ai/study-plan", { weakTopics });
+  const { data } = await api.post("/ai/study-plan", {
+    weakTopics,
+  });
   return data;
 }
 
